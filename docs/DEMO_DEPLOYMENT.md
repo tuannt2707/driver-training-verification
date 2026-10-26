@@ -1,6 +1,11 @@
 # Demo online với backend Express và SQLite
 
-Cấu hình ngày 26/10/2026: `render.yaml` chuẩn bị một Render Web Service gói Free, Node.js 24, giữ nguyên backend và API. Đây là cấu hình sẵn sàng triển khai, chưa phải xác nhận có dịch vụ online; chỉ URL/trạng thái triển khai thành công từ hosting mới xác nhận demo đã hoạt động.
+Cập nhật ngày 26/10/2026: demo đã triển khai thành công trên Render Web Service gói Free, Node.js 24, khu vực Singapore, giữ nguyên backend và API.
+
+- Website: https://driver-training-verification-demo.onrender.com/lookup
+- Quản trị: https://driver-training-verification-demo.onrender.com/login
+- Render service: `srv-dbfarttg1s2s73f3o6h0`.
+- Database và tài khoản mẫu tách khỏi dữ liệu vận hành trên máy. Tự động deploy khi push được tắt.
 
 ## Cấu hình đã chuẩn bị
 
