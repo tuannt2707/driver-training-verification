@@ -1,0 +1,20 @@
+import React from 'react';
+import assert from 'node:assert/strict';
+import {renderToStaticMarkup} from 'react-dom/server';
+import {PublicCertificateDetails} from '../src/components/PublicCertificateDetails';
+import {PublicCertificateView} from '../src/types';
+
+const certificate={fullName:'HỌC VIÊN MẪU',certificateNumber:'GCN-TEST',cccd:'079******284',licenseNumber:'790******039',licenseClass:'PRIVATE-LICENSE-CLASS',courseName:'Chương trình mẫu',schoolName:'Cơ sở mẫu',status:'PENDING',statusLabel:'Chưa cấp',isIssued:false,isExpired:false,isRevoked:false,examScore:'',examResult:'',coorganizingUnit:'   ',transportUnit:'',examDate:'',trainingStartDate:'01/01/2026',trainingEndDate:'',decisionNumber:'',decisionDate:'',signatoryName:''} as PublicCertificateView;
+const html=renderToStaticMarkup(<PublicCertificateDetails cert={certificate}/>);
+assert.ok(!html.includes('PRIVATE-LICENSE-CLASS'),'Public display must hide license class');
+assert.ok(html.includes('079******284')&&html.includes('790******039'),'Identity masking from the DTO must be preserved');
+for(const label of ['Đơn vị phối hợp tổ chức:','Đơn vị kinh doanh vận tải:','Điểm kiểm tra:','Kết quả kiểm tra:','Ngày kiểm tra:','Số và ngày Quyết định cấp:','Người ký:'])assert.ok(!html.includes(label),'Empty rows must be absent: '+label);
+assert.ok(!html.includes('10/10')&&!html.includes('Học viên tự do'),'Do not invent missing information');
+assert.ok(html.includes('01/01/2026')&&!html.includes('01/01/2026 đến'),'Partial date ranges should show available data only');
+const populated=renderToStaticMarkup(<PublicCertificateDetails cert={{...certificate,transportUnit:'Đơn vị mẫu',examScore:'0/10',examResult:'Không đạt',decisionNumber:'QD-TEST'}}/>);
+assert.ok(populated.includes('Đơn vị mẫu')&&populated.includes('0/10')&&populated.includes('Không đạt')&&populated.includes('QD-TEST'),'Real values including zero scores must remain visible');
+const revoked=renderToStaticMarkup(<PublicCertificateDetails cert={{...certificate,isRevoked:true,statusLabel:'Đã thu hồi'}}/>);
+assert.ok(revoked.includes('is-revoked')&&revoked.includes('Đã thu hồi'),'Revocation status must remain visible');
+const privateFields=renderToStaticMarkup(<PublicCertificateDetails cert={{...certificate,phoneNumberMasked:'PRIVATE-PHONE',issueDate:'PRIVATE-ISSUE-DATE',signatoryName:'PRIVATE-SIGNER',signatoryTitle:'PRIVATE-SIGNER-TITLE'}}/>);
+for(const text of ['PRIVATE-PHONE','PRIVATE-ISSUE-DATE','PRIVATE-SIGNER','PRIVATE-SIGNER-TITLE','Điện thoại:','Ngày cấp Giấy chứng nhận:','Người ký:','Chức danh người ký:'])assert.ok(!privateFields.includes(text),'Public presentation must omit '+text);
+console.log('8 public certificate presentation checks passed.');
