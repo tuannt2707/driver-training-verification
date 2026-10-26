@@ -16,6 +16,7 @@ Cập nhật tài liệu: **21/10/2026**, theo mã nguồn sau sửa bảo mật
 | [Thiết kế giao diện](docs/UI_DESIGN.md) | Nhận diện mới, màn hình, component, responsive, bàn phím và in |
 | [Triển khai và vận hành](docs/OPERATIONS.md) | Bootstrap admin, môi trường, launcher, backup/restore, nâng cấp và sự cố |
 | [Xuất bản mã nguồn GitHub](docs/GITHUB.md) | Bản source sạch, loại dữ liệu vận hành/lịch sử cũ, CI và phân biệt repository với hosting |
+| [Triển khai demo online](docs/DEMO_DEPLOYMENT.md) | Cấu hình Render Free, backend thật, database mẫu riêng và tài khoản demo |
 | [Kiểm thử và nghiệm thu](docs/TESTING.md) | Bộ kiểm tra hồi quy, kết quả đã ghi nhận và checklist còn cần thực hiện |
 | [Audit ban đầu](AUDIT-2026-10-21.md) | Bản ghi lịch sử trước sửa; không phải mô tả trạng thái hiện tại |
 | [Kết quả sửa lỗi](REMEDIATION-2026-10-21.md) | Thay đổi sau audit, kiểm chứng và giới hạn còn lại |

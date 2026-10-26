@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: driver-training-verification-demo
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run start:demo
+    healthCheckPath: /lookup
+    autoDeployTrigger: off
+    envVars:
+      - key: NODE_VERSION
+        value: 24.22.1
+      - key: DEMO_MODE
+        value: "true"
+      - key: VITE_DEMO_MODE
+        value: "true"
+      - key: HOST
+        value: 0.0.0.0
+      - key: DEMO_DATA_DIR
+        value: /tmp/driver-training-web-demo

@@ -548,3 +548,5 @@ button { transition:background .18s, border-color .18s, color .18s, box-shadow .
 .public-certificate-status.is-expired {background:#fef3c7;color:#92400e}
 .public-certificate-status.is-pending {background:#f1f5f9;color:#475569}
 @media(min-width:640px){.public-certificate-status{max-width:260px}}
+.demo-environment-note {position:relative;z-index:55;display:flex;align-items:center;justify-content:center;gap:10px;padding:9px 16px;background:#fff5d9;color:#6d4c14;border-bottom:1px solid #efdfae;font-size:12px;line-height:1.5;text-align:center;flex-wrap:wrap}
+.demo-environment-note strong {letter-spacing:.05em;font-size:11px}

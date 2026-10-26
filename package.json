@@ -7,11 +7,13 @@
     "dev": "node --env-file-if-exists=.env --import tsx scripts/dev.mjs",
     "build": "npm run lint && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node scripts/serve.mjs",
+    "start:demo": "node scripts/serve-demo.mjs",
     "clean": "node scripts/clean.mjs",
     "lint": "tsc --noEmit",
     "test:flow": "node scripts/security-regression.mjs",
     "test:public-view": "node --import tsx scripts/public-certificate-view-regression.tsx",
-    "test": "npm run build && npm run test:flow && npm run test:public-view",
+    "test:demo": "node scripts/demo-regression.mjs",
+    "test": "npm run build && npm run test:flow && npm run test:public-view && npm run test:demo",
     "backup": "node scripts/backup.mjs"
   },
   "dependencies": {

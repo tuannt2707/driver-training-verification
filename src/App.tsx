@@ -154,6 +154,7 @@ export default function App() {
   return (
     <div className="app-shell min-h-screen flex flex-col bg-[#f3f8f4] text-slate-900 font-sans relative selection:bg-emerald-600 selection:text-white">
       <a href="#main-content" className="skip-link">Đến nội dung chính</a>
+      {import.meta.env.VITE_DEMO_MODE==='true'&&<div className="demo-environment-note no-print" role="note"><strong>BẢN DEMO</strong><span>Dữ liệu mẫu riêng · Các thay đổi có thể được đặt lại khi dịch vụ khởi động lại.</span></div>}
       {/* Floating Security Banner when F12/Right click intercepted */}
       {securityNotice && (
         <div className="fixed top-4 right-4 z-50 max-w-sm bg-red-600 text-white p-3.5 rounded-2xl shadow-2xl flex items-start gap-3 animate-in slide-in-from-top-4 duration-200 border border-red-400">
